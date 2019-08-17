@@ -15,10 +15,10 @@ public class HelperBase {
     wd.findElement(locator).click();
   }
 
-  private void type(String group_header, By locator, String text) {
-    wd.findElement(locator).clear();
-    wd.findElement(locator).sendKeys(text);
-  }
+//  private void type(String group_header, By locator, String text) {
+//    wd.findElement(locator).clear();
+//    wd.findElement(locator).sendKeys(text);
+//  }
 
   protected void type(By locator, String text) {
     click(locator);
