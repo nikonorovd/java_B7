@@ -12,12 +12,12 @@ public class GroupCreationTests {
   public void setUp() throws Exception {
     wd = new FirefoxDriver();
     wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    wd.get("http://localhost/");
 
     login("admin", "secret");
   }
 
   private void login(String username, String password) {
-    wd.get("http://localhost/");
     wd.findElement(By.name("user")).clear();
     wd.findElement(By.name("user")).sendKeys(username);
     wd.findElement(By.name("pass")).clear();
@@ -33,7 +33,7 @@ public class GroupCreationTests {
     fillGroupForm(new GroupData("Test1", "Test2", "Test3"));
     submitGroupCreation();
     returnToGroupPage();
-    wd.findElement(By.linkText("Logout")).click();
+
   }
 
   private void returnToGroupPage() {
