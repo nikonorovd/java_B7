@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 public class HelperBase {
   protected WebDriver wd;
 
+
   public HelperBase(WebDriver wd) {
     this.wd = wd;
   }
@@ -30,6 +31,15 @@ public class HelperBase {
     } catch (NoAlertPresentException e) {
       return false;
     }
+  }
+
+  protected void click_c(By locator) {
+    wd.findElement(locator).click();
+  }
+
+  protected void type_c(By locator, String text) {
+    wd.findElement(locator).clear();
+    wd.findElement(locator).sendKeys(text);
   }
 }
 
