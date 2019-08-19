@@ -3,17 +3,15 @@ package ru.stqa.d7.addressbook.Tests;
 import org.testng.annotations.Test;
 import ru.stqa.d7.addressbook.model.ContactData;
 
-public class ContactCreationTests extends TestBase{
+public class ContactModificationTests extends TestBase{
 
+    @Test
+    public void testContactModification(){
 
-  @Test
-  public void testContactCreation()  {
-
-    app.getNavigationHelper().gotoContactPage();
+    app.getContactHelper().selectContact();
+    app.getContactHelper().editContact();
     app.getContactHelper().fillContactForm(new ContactData("Oleg", "Tokarev", "OlegTok", "Nike", "Moscow", "+1", "2652", "info@nike.ru"));
-    app.getContactHelper().enterNewContact();
+    app.getContactHelper().updateContact();
     app.getContactHelper().goToHomePage();
-
-  }
-
+    }
 }

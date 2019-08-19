@@ -38,4 +38,20 @@ public class ContactHelper extends HelperBase{
     type_c(By.name("email"), contactData.getEmail());
   }
 
+  public void selectContact() {
+    click(By.id("16"));
+  }
+
+  public void deleteContact() {
+    click(By.xpath("//input[@value='Delete']"));
+    wd.switchTo().alert().accept();
+  }
+
+  public void editContact() {
+    click(By.xpath("//img[@alt='Edit']"));
+  }
+
+  public void updateContact() {
+    click(By.name("update"));
+  }
 }
