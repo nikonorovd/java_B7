@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 
 public class ApplicationManager {
-  public WebDriver wd;
+  WebDriver wd;
 
   private  ContactHelper contactHelper;
   private SessionHelper sessionHelper;
@@ -26,11 +26,11 @@ public class ApplicationManager {
   }
 
   public void init() {
-    if (browser == BrowserType.FIREFOX){
+    if (browser.equals(BrowserType.FIREFOX)){
       wd = new FirefoxDriver();
-    }else if (browser == BrowserType.CHROME){
+    }else if (browser.equals(BrowserType.CHROME)){
       wd = new ChromeDriver();
-    }else if (browser == BrowserType.IE){
+    }else if (browser.equals(BrowserType.IE)){
       wd = new InternetExplorerDriver();
     }
 
