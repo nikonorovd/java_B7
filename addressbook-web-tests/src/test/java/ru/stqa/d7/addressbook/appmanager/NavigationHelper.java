@@ -11,10 +11,21 @@ public class NavigationHelper extends HelperBase{
   }
 
   public void gotoGroupPage() {
+
+    if (IsElementPresent(By.tagName("h1"))
+            && wd.findElement(By.tagName("h1")).getText().equals("Groups")
+            && IsElementPresent(By.name("new"))){
+      return;
+    }
    click(By.linkText("groups"));
   }
 
   public void gotoContactPage() {
+    if (IsElementPresent(By.tagName("h1"))
+            && wd.findElement(By.tagName("h1")).getText().equals("Edit / add address book entry")
+            && IsElementPresent(By.name("add"))){
+      return;
+    }
     click(By.linkText("add new"));
   }
 }
