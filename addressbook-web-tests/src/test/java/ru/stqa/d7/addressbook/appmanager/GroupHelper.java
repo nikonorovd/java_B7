@@ -67,4 +67,8 @@ public class GroupHelper extends HelperBase {
     }
 
   }
+
+  public int getGroupCout() {
+    return wd.findElements(By.name("selected[]")).size();
+  }
 }
