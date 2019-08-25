@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.d7.addressbook.model.ContactData;
 
-public class ContactHelper extends HelperBase{
+public class ContactHelper extends HelperBase {
 
   public ContactHelper(WebDriver wd) {
     super(wd);
@@ -40,9 +40,9 @@ public class ContactHelper extends HelperBase{
     click_c(By.name("email"));
     type_c(By.name("email"), contactData.getEmail());
 
-    if (creation){
+    if (creation) {
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
-    }else {
+    } else {
       Assert.assertFalse(IsElementPresent(By.name("new_group")));
     }
   }
@@ -62,5 +62,26 @@ public class ContactHelper extends HelperBase{
 
   public void updateContact() {
     click(By.name("update"));
+  }
+
+  public void createContact(ContactData contact, boolean b) {
+    fillContactForm(new ContactData("Oleg", "Tokarev", "OlegTok", "Nike", "Moscow",
+            "+1", "2652", "info@nike.ru", "[none]"), true);
+    enterNewContact();
+    goToHomePage();
+  }
+
+  public boolean isThereAContact() {
+    return isElementPresent(By.name("selected[]"));
+  }
+
+
+  public boolean isElementPresent(By by) {
+    try {
+      wd.findElement(by);
+      return true;
+    } catch (NoSuchElementException e) {
+      return false;
+    }
   }
 }
