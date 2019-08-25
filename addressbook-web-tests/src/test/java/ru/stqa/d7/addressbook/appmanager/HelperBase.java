@@ -2,6 +2,7 @@ package ru.stqa.d7.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
 public class HelperBase {
@@ -45,6 +46,15 @@ public class HelperBase {
   protected void type_c(By locator, String text) {
     wd.findElement(locator).clear();
     wd.findElement(locator).sendKeys(text);
+  }
+
+  protected boolean IsElementPresent(By locator) {
+    try{
+      wd.findElement(locator);
+      return true;
+    }catch (NoSuchElementException ex){
+      return false;
+    }
   }
 }
 
