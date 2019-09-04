@@ -84,4 +84,12 @@ public class ContactHelper extends HelperBase {
       return false;
     }
   }
+
+  public int getContactCount() {
+    return wd.findElements(By.name("selected[]")).size();
+  }
+
+  public void goToStartPage() {
+    click(By.id("logo"));
+  }
 }
