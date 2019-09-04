@@ -15,7 +15,7 @@ public class ContactModificationTests extends TestBase {
                       "+1", "2652", "info@nike.ru", "[none]"), true);
     }
     int before = app.getContactHelper().getContactCount();
-    app.getContactHelper().selectContact();
+    app.getContactHelper().selectContact(before - 1);
     app.getContactHelper().editContact();
     app.getContactHelper().fillContactForm(new ContactData
             ("Oleg", "Tokarev", "OlegTok", "Nike", "Moscow",
