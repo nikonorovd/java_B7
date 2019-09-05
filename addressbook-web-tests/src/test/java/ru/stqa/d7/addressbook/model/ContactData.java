@@ -58,4 +58,7 @@ public class ContactData {
   public String getGroup() {
     return group;
   }
+
+  public void add(ContactData contact) {
+  }
 }
