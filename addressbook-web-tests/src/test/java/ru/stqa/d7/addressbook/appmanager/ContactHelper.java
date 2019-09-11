@@ -103,7 +103,7 @@ public class ContactHelper extends HelperBase {
     List<WebElement> elements = wd.findElements(By.cssSelector("input[type = 'checkbox'][name = 'selected[]']"));
     for (WebElement element : elements){
       String name = element.getText();
-      String id = element.getAttribute( "value" );
+      int id =Integer.parseInt( element.getAttribute( "value" ));
       ContactData contact = new ContactData(id, name,null, null, null,null,null,null,null, null);
       contacts.add(contact);
     }
