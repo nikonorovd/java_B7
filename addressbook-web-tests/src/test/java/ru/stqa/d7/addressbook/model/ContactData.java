@@ -12,6 +12,7 @@ public class ContactData {
   private final String email;
   private String group;
 
+
   public ContactData(String firstname, String middlename, String nickname, String company, String address, String home, String mobile, String email, String group ) {
     this.id = null;
     this.firstname = firstname;
@@ -77,6 +78,10 @@ public class ContactData {
   public void add(ContactData contact) {
   }
 
+  public String getId() {
+    return id;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -105,9 +110,4 @@ public class ContactData {
             ", middlename='" + middlename + '\'' +
             '}';
   }
-
-  public String getId() {
-    return id;
-  }
-
 }

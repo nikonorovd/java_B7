@@ -104,7 +104,8 @@ public class ContactHelper extends HelperBase {
     for (WebElement element : elements){
       String name = element.getText();
       String id = element.getAttribute( "value" );
-      ContactData contact = new ContactData(id, name,null, null, null,null,null,null,null, null);
+      String middlename = element.getText();
+      ContactData contact = new ContactData(id, name,middlename, null, null,null,null,null,null, null);
       contacts.add(contact);
     }
   return contacts;
