@@ -1,7 +1,7 @@
 package ru.stqa.d7.addressbook.model;
 
 public class ContactData {
-  private final String id;
+  private int id;
   private final String firstname;
   private final String middlename;
   private final String nickname;
@@ -14,7 +14,7 @@ public class ContactData {
 
 
   public ContactData(String firstname, String middlename, String nickname, String company, String address, String home, String mobile, String email, String group ) {
-    this.id = null;
+    this.id = 0;
     this.firstname = firstname;
     this.middlename = middlename;
     this.nickname = nickname;
@@ -26,7 +26,7 @@ public class ContactData {
     this.group = group;
   }
 
-  public ContactData(String id, String firstname, String middlename, String nickname, String company, String address, String home, String mobile, String email, String group ) {
+  public ContactData(int id, String firstname, String middlename, String nickname, String company, String address, String home, String mobile, String email, String group ) {
     this.id = id;
     this.firstname = firstname;
     this.middlename = middlename;
@@ -78,7 +78,11 @@ public class ContactData {
   public void add(ContactData contact) {
   }
 
-  public String getId() {
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public int getId() {
     return id;
   }
 
@@ -89,14 +93,14 @@ public class ContactData {
 
     ContactData that = (ContactData) o;
 
-    if (id != null ? !id.equals( that.id ) : that.id != null) return false;
+    if (id != that.id) return false;
     if (firstname != null ? !firstname.equals( that.firstname ) : that.firstname != null) return false;
     return middlename != null ? middlename.equals( that.middlename ) : that.middlename == null;
   }
 
   @Override
   public int hashCode() {
-    int result = id != null ? id.hashCode() : 0;
+    int result = id;
     result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
     result = 31 * result + (middlename != null ? middlename.hashCode() : 0);
     return result;
