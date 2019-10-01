@@ -5,7 +5,6 @@ import org.testng.annotations.Test;
 import ru.stqa.d7.addressbook.model.ContactData;
 
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 
 public class ContactCreationTests extends TestBase{
@@ -14,7 +13,7 @@ public class ContactCreationTests extends TestBase{
   @Test (enabled = false)
   public void testContactCreation()  {
     List<ContactData> before = app.getContactHelper().getContactList();
-    app.getNavigationHelper().gotoContactPage();
+    app.goTo().gotoContactPage();
     ContactData contact = new ContactData("Oleg", "Tokarev", "OlegTok", "Nike", "Moscow",
             "+1", "2652", "info@nike.ru","[none]");
     app.getContactHelper().createContact (contact, true);
