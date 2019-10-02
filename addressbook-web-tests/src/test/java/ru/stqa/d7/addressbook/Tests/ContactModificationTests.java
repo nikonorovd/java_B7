@@ -16,7 +16,7 @@ public class ContactModificationTests extends TestBase {
                       "+1", "2652", "info@nike.ru", "[none]"), true);
     }
     List<ContactData> before = app.getContactHelper().getContactList();
-    app.getContactHelper().selectContact(before.size() - 1);
+//    app.getContactHelper().selectContact(before.size() - 1);
     app.getContactHelper().editContact();
     ContactData contact = new ContactData
             (before.get( before.size() - 1 ).getId(),
