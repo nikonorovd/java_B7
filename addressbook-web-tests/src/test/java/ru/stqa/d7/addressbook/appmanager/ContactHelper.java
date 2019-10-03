@@ -70,8 +70,8 @@ public class ContactHelper extends HelperBase {
   }
 
   public void create(ContactData contact, boolean b) {
-    fillContactForm(new ContactData("Oleg", "Tokarev", "OlegTok", "Nike", "Moscow",
-            "+1", "2652", "info@nike.ru", "[none]"), true);
+    fillContactForm(new ContactData().withFirstname("Oleg").withMiddlename("Tokarev").withNickname( "OlegTok" ).withCompany( "Nike" ).withAddress( "Moscow" )
+            .withHome( "+1" ).withMobile( "2652" ).withEmail( "info@nike.ru" ).withGroup( "[none]" ), true);
     enterNewContact();
     goToHomePage();
   }
@@ -120,8 +120,7 @@ public class ContactHelper extends HelperBase {
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
       String address = cells.get(3).getText();
       String middlename = element.getText();
-      ContactData contact = new ContactData(id, name,middlename, null, null, address,null,null,null, null);
-      contacts.add(contact);
+      contacts.add(new ContactData().withId(id).withFirstname( name).withMiddlename( middlename).withAddress( address ));
     }
   return contacts;
   }
