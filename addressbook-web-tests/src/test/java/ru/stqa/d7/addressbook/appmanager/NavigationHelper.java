@@ -20,7 +20,7 @@ public class NavigationHelper extends HelperBase{
    click(By.linkText("groups"));
   }
 
-  public void gotoContactPage() {
+  public void contactPage() {
     if (IsElementPresent(By.tagName("h1"))
             && wd.findElement(By.tagName("h1")).getText().equals("Edit / add address book entry")
             && IsElementPresent(By.name("add"))){
