@@ -8,7 +8,6 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.d7.addressbook.model.ContactData;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -53,11 +52,6 @@ public class ContactHelper extends HelperBase {
     }
   }
 
-  public void selectContact(int index) {
-
-    wd.findElements(By.name("selected[]")).get(index).click();
-  }
-
 
   public void selectContactById(int id) {
 
@@ -74,6 +68,10 @@ public class ContactHelper extends HelperBase {
 //    click(By.xpath("//img[@alt='Edit']"));
   }
 
+  private void editContactById(int id) {
+    wd.findElement(By.cssSelector("a[href='edit.php?id=" + id +"']")).click();
+  }
+
   public void updateContact() {
     click(By.name("update"));
   }
@@ -85,18 +83,13 @@ public class ContactHelper extends HelperBase {
     goToHomePage();
   }
 
-  public void modify(ContactData contact, int index) {
-    editContact( index );
+  public void modify(ContactData contact) {
+    editContactById( contact.getId() );
     fillContactForm(contact,false);
     updateContact();
     goToStartPage();
   }
 
-  public void delete(int index) {
-    selectContact( index );
-    deleteContact();
-    goToStartPage();
-  }
 
   public void delete(ContactData Contact) {
     selectContactById( Contact.getId() );
@@ -126,19 +119,6 @@ public class ContactHelper extends HelperBase {
     click(By.id("logo"));
   }
 
-  public List<ContactData> list() {
-    List<ContactData> contacts = new ArrayList<ContactData>();
-    List<WebElement> elements = wd.findElements(By.name("entry"));
-    for (WebElement element : elements){
-      List<WebElement> cells = element.findElements(By.cssSelector("td"));
-      String name = cells.get(2).getText();
-      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      String address = cells.get(3).getText();
-      String middlename = element.getText();
-      contacts.add(new ContactData().withId(id).withFirstname( name).withMiddlename( middlename).withAddress( address ));
-    }
-  return contacts;
-  }
 
   public Set<ContactData> all() {
     Set<ContactData> contacts = new HashSet<>();
@@ -148,8 +128,8 @@ public class ContactHelper extends HelperBase {
       String name = cells.get(2).getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
       String address = cells.get(3).getText();
-      String middlename = element.getText();
-      contacts.add(new ContactData().withId(id).withFirstname( name).withMiddlename( middlename).withAddress( address ));
+      String email = cells.get(4).getText();
+      contacts.add(new ContactData().withId(id).withFirstname( name).withAddress( address ).withEmail(email));
     }
     return contacts;
   }

@@ -5,14 +5,13 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.d7.addressbook.model.ContactData;
 
-import java.util.List;
 import java.util.Set;
 
 public class ContactDeletionTests extends TestBase {
 
   @BeforeMethod
   public void ensurePreconditions(){
-    if (app.contact().list().size() == 0) {
+    if (app.contact().all().size() == 0) {
       app.contact().create(new ContactData ().withFirstname("Oleg").withMiddlename("Tokarev").withNickname( "OlegTok" ).withCompany( "Nike" ).withAddress( "Moscow" )
               .withHome( "+1" ).withMobile( "2652" ).withEmail( "info@nike.ru" ).withGroup( "[none]" ), true);
     }
