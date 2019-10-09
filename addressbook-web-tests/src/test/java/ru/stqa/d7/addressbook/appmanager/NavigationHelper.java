@@ -29,4 +29,7 @@ public class NavigationHelper extends HelperBase{
     click(By.linkText("add new"));
   }
 
+  public void goToHomePage() {
+    click_c(By.linkText("home page"));
+  }
 }

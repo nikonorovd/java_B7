@@ -11,6 +11,9 @@ public class ContactData {
   private String mobile;
   private String email;
   private String group;
+  private String work;
+
+
 
 
   public String getFirstname() {
@@ -47,6 +50,10 @@ public class ContactData {
 
   public String getGroup() {
     return group;
+  }
+
+  public String getWork() {
+    return work;
   }
 
   public void add(ContactData contact) {
@@ -99,6 +106,10 @@ public class ContactData {
 
   public ContactData withGroup(String group) {
     this.group = group;
+    return this;
+  }
+  public ContactData withWork(String work) {
+    this.work = work;
     return this;
   }
 
