@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.d7.addressbook.model.ContactData;
 import ru.stqa.d7.addressbook.model.Contacts;
+import ru.stqa.d7.addressbook.model.Groups;
 
 import java.util.List;
 
@@ -79,6 +80,7 @@ public class ContactHelper extends HelperBase {
     fillContactForm(new ContactData().withFirstname("Oleg").withMiddlename("Tokarev").withNickname( "OlegTok" ).withCompany( "Nike" ).withAddress( "Moscow" )
             .withHome( "+1" ).withMobile( "2652" ).withEmail( "info@nike.ru" ).withGroup( "[none]" ), true);
     enterNewContact();
+    contactCache = null;
     goToHomePage();
   }
 
@@ -86,6 +88,7 @@ public class ContactHelper extends HelperBase {
     editContactById( contact.getId() );
     fillContactForm(contact,false);
     updateContact();
+    contactCache = null;
     goToStartPage();
   }
 
@@ -93,6 +96,7 @@ public class ContactHelper extends HelperBase {
   public void delete(ContactData Contact) {
     selectContactById( Contact.getId() );
     deleteContact();
+    contactCache = null;
     goToStartPage();
   }
 
@@ -119,8 +123,14 @@ public class ContactHelper extends HelperBase {
   }
 
 
+  private Contacts contactCache = null;
+
+
   public Contacts all() {
-    Contacts contacts = new Contacts();
+    if (contactCache != null){
+      return new Contacts(contactCache);
+    }
+    contactCache = new Contacts();
     List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element : elements){
       List<WebElement> cells = element.findElements(By.cssSelector("td"));
@@ -128,9 +138,9 @@ public class ContactHelper extends HelperBase {
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
       String address = cells.get(3).getText();
       String email = cells.get(4).getText();
-      contacts.add(new ContactData().withId(id).withFirstname( name).withAddress( address ).withEmail(email).withMiddlename( "" ));
+      contactCache.add(new ContactData().withId(id).withFirstname( name).withAddress( address ).withEmail(email).withMiddlename( "" ));
     }
-    return contacts;
+    return contactCache;
   }
 
 }
