@@ -88,7 +88,7 @@ public class GroupHelper extends HelperBase {
 
   }
 
-  public int getGroupCout() {
+  public int cout() {
     return wd.findElements(By.name("selected[]")).size();
   }
 
