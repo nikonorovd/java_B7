@@ -9,9 +9,7 @@ import org.testng.Assert;
 import ru.stqa.d7.addressbook.model.ContactData;
 import ru.stqa.d7.addressbook.model.Contacts;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class ContactHelper extends HelperBase {
 
@@ -130,7 +128,7 @@ public class ContactHelper extends HelperBase {
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
       String address = cells.get(3).getText();
       String email = cells.get(4).getText();
-      contacts.add(new ContactData().withId(id).withFirstname( name).withAddress( address ).withEmail(email));
+      contacts.add(new ContactData().withId(id).withFirstname( name).withAddress( address ).withEmail(email).withMiddlename( "" ));
     }
     return contacts;
   }
